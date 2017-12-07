@@ -1,23 +1,19 @@
 import React, {Component} from 'react'
 import SingleCampusPreview from './SingleCampusPreview'
-import {Container} from 'semantic-ui-react'
+import {fetchCampusesThunk} from '../actions'
+import {connect} from 'react-redux'
 
-export default class CampusView extends Component {
-  constructor() {
-    super()
-    this.state = {
-      campuses: []
-    }
-  }
+class CampusView extends Component {
+
   componentDidMount() {
-    fetch('/api/campuses')
-      .then(res => res.json())
-      .then(campuses => this.setState({campuses}))
+    this.props.fetchCampuses()
+
   }
+
   render() {
     return (
       <div className='campus-preview-window'>
-        {this.state.campuses.map(campus => {
+        {this.props.campuses.map(campus => {
           return (
             <SingleCampusPreview key={campus.id} campus={campus} />
           )
@@ -26,3 +22,17 @@ export default class CampusView extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    campuses: state.campuses
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCampuses: () => dispatch(fetchCampusesThunk(dispatch))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampusView)
