@@ -31,11 +31,28 @@ body {
 
 .campus-view-window {
   display: flex;
+  flex-wrap: wrap;
   width: 70vw;
   background: white;
 }
 
 .single-campus-preview {
-  width: 30vw;
-  margin: 5vw;
+  flex: 1 1 1em;
+  margin: 2vh 2vw;
+}
+
+.campus-detail-left {
+  margin: 1em 4em 1em 1em;
+
+}
+
+.campus-detail-right {
+  margin: 1em 1em 1em 2em;
+  flex: 1 1 1em;
+}
+
+.student-view-window {
+  width: 70vw;
+  padding: 2em 3em;
+  background: white;
 }

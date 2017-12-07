@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 export default function Navbar () {
   return (
-      <Menu inverted >
+      <Menu inverted fixed='top' >
         <Link to='/'>
           <Menu.Item header>TMHIAOJ</Menu.Item>
         </Link>

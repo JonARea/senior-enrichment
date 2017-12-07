@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {setActiveCampusThunk} from '../actions'
+import StudentTable from './StudentTable'
+import {setActiveCampusThunk, fetchStudentsThunk} from '../actions'
 import {connect} from 'react-redux'
 import { Tab } from 'semantic-ui-react'
 
@@ -8,15 +9,17 @@ class SingleCampusView extends Component {
   componentDidMount () {
     const id =  this.props.location.pathname.split('campuses/')[1]
     this.props.setActiveCampus(id)
+    this.props.fetchStudents()
   }
   render () {
     const {name, imageUrl, description} = this.props.activeCampus
+    const students = this.props.students
     const panes = [
-      { menuItem: 'Tab 1', render: () => <Tab.Pane attached={false}>{description}</Tab.Pane> },
-      { menuItem: 'Tab 2', render: () => <Tab.Pane attached={false}>Students List</Tab.Pane> }
+      { menuItem: 'Description', render: () => <Tab.Pane attached={false}>{description}</Tab.Pane> },
+      { menuItem: 'Students', render: () => <Tab.Pane attached={false}><StudentTable students={students} /></Tab.Pane> }
     ]
     return (
-      <div className="campus-view-window campus-detail">
+      <div className="campus-view-window">
         <div className="campus-detail-left">
           <h2>{name}</h2>
           <img src={imageUrl} alt="could not load the image " />
@@ -31,13 +34,19 @@ class SingleCampusView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    activeCampus: state.activeCampus
+    activeCampus: state.activeCampus,
+    students: state.students
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setActiveCampus: (campusId) => dispatch(setActiveCampusThunk(dispatch, campusId))
+    setActiveCampus (campusId) {
+      dispatch(setActiveCampusThunk(dispatch, campusId))
+    },
+    fetchStudents () {
+      dispatch(fetchStudentsThunk(dispatch))
+    }
   }
 }
 
