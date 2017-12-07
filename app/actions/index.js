@@ -12,7 +12,14 @@ export const SET_ACTIVE_CAMPUS = 'SET_ACTIVE_CAMPUS'
 export const populateCampuses = (campuses) => {
   return {
     type: POPULATE_CAMPUSES,
-    campuses: campuses
+    campuses
+  }
+}
+
+export const setActiveCampus = (activeCampus) => {
+  return {
+    type: SET_ACTIVE_CAMPUS,
+    activeCampus
   }
 }
 
@@ -23,6 +30,17 @@ export const fetchCampusesThunk = (dispatch) => {
     axios.get('api/campuses')
       .then(res => res.data)
       .then(campuses => dispatch(populateCampuses(campuses)))
+      .catch(err => console.error('an error getting stuff ', err))
+  }
+}
+
+export const setActiveCampusThunk = (dispatch, id) => {
+  return () => {
+    axios.get('/api/campuses/' + id)
+      .then(res => {
+        console.log('response from the server ', res.data)
+        return res.data})
+      .then(activeCampus => dispatch(setActiveCampus(activeCampus)))
       .catch(err => console.error('an error getting stuff ', err))
   }
 }

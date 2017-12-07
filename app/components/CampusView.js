@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SingleCampusPreview from './SingleCampusPreview'
+import PreviewCampus from './PreviewCampus'
 import {fetchCampusesThunk} from '../actions'
 import {connect} from 'react-redux'
 
@@ -15,7 +15,7 @@ class CampusView extends Component {
       <div className='campus-preview-window'>
         {this.props.campuses.map(campus => {
           return (
-            <SingleCampusPreview key={campus.id} campus={campus} />
+            <PreviewCampus key={campus.id} campus={campus} />
           )
         })}
       </div>

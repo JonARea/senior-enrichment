@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export default function SingleCampusPreview (props) {
+export default function PreviewCampus (props) {
   const {name, imageUrl, id} = props.campus
   return (
     <div className="single-campus-preview">

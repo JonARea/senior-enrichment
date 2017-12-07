@@ -1,14 +1,20 @@
-'use strict'; 
+'use strict';
 
 const express = require('express');
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
+const cacheControl = require('express-cache-controller')
 
 const app = express();
 
 //logging middleware
 app.use(volleyball);
+
+//cache control
+app.use(cacheControl({
+  noCache: true
+}))
 
 //body parsing middleware
 app.use(bodyParser.json());
