@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import SingleCampusPreview from './SingleCampusPreview'
+import {Container} from 'semantic-ui-react'
 
 export default class CampusView extends Component {
   constructor() {
@@ -15,15 +16,12 @@ export default class CampusView extends Component {
   }
   render() {
     return (
-      <div>
-        <p>CampusView</p>
-        <div>
-          {this.state.campuses.map(campus => {
-            return (
-              <SingleCampusPreview key={campus.id} name={campus.name} image={campus.imageUrl} />
-            )
-          })}
-        </div>
+      <div className='campus-preview-window'>
+        {this.state.campuses.map(campus => {
+          return (
+            <SingleCampusPreview key={campus.id} campus={campus} />
+          )
+        })}
       </div>
     )
   }

@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.ui.menu {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.menu .item :hover {
+  background-color: #555;
+}
+
+.content-window {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('http://idealphotography.biz/wp-content/uploads/2016/06/Cool-Space-Wallpaper-HD-With-HD-Windows-Wallpaper-Full-HD-with-Space-Wallpaper-HD-Download-HD-Wallpaper.jpg')
+}
+
+.sign-in-window-container {
+  width: 25vw;
+}
+
+.campus-preview-window {
+  display: flex;
+  width: 70vw;
+  background: white;
+}
+
+.single-campus-preview {
+  width: 30vw;
+  margin: 5vw;
+}
