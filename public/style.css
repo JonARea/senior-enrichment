@@ -22,14 +22,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('http://idealphotography.biz/wp-content/uploads/2016/06/Cool-Space-Wallpaper-HD-With-HD-Windows-Wallpaper-Full-HD-with-Space-Wallpaper-HD-Download-HD-Wallpaper.jpg')
+  background-image: url('./SpaceWallpaper.jpg');
 }
 
 .sign-in-window-container {
   width: 25vw;
 }
 
-.campus-preview-window {
+.campus-view-window {
   display: flex;
   width: 70vw;
   background: white;

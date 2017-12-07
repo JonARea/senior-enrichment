@@ -13,7 +13,7 @@ app.use(volleyball);
 
 //cache control
 app.use(cacheControl({
-  noCache: true
+  noCache: false
 }))
 
 //body parsing middleware

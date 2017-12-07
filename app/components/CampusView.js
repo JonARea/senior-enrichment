@@ -12,7 +12,7 @@ class CampusView extends Component {
 
   render() {
     return (
-      <div className='campus-preview-window'>
+      <div className='campus-view-window'>
         {this.props.campuses.map(campus => {
           return (
             <PreviewCampus key={campus.id} campus={campus} />
