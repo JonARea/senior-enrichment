@@ -78,3 +78,10 @@ body {
   flex: 1 1 1em;
 }
 
+.campus-form-container {
+  background: white;
+  width: 50vw;
+  min-height: 50vh;
+  padding: 2em;
+  border-radius: 5px;
+}

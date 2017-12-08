@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PreviewCampus from './PreviewCampus'
 import {fetchCampusesThunk} from '../actions'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Label, Button, Header} from 'semantic-ui-react'
 
 class AllCampuses extends Component {
@@ -13,11 +14,14 @@ class AllCampuses extends Component {
 
   render() {
     return (
-
-        <div className='campus-view-window'>
+      <div className='campus-view-window'>
           <Header attached>
           Our campuses
-          <Button>Add a new Campus</Button>
+          <Link to='/campuses/add'>
+            <Button>
+              Add a new Campus
+            </Button>
+          </Link>
         </Header>
           {this.props.campuses.map(campus => {
             return (

@@ -6,6 +6,7 @@ export const POPULATE_CAMPUSES = 'POPULATE_CAMPUSES'
 export const POPULATE_STUDENTS = 'POPULATE_STUDENTS'
 export const SET_ACTIVE_STUDENT = 'SET_ACTIVE_STUDENT'
 export const SET_ACTIVE_CAMPUS = 'SET_ACTIVE_CAMPUS'
+export const ADDED_CAMPUS = 'ADDED_CAMPUS'
 
 //ACTIONS
 
@@ -34,6 +35,13 @@ export const setActiveStudent = (activeStudent) => {
   return {
     type: SET_ACTIVE_STUDENT,
     activeStudent
+  }
+}
+
+export const addedCampus = (campus) => {
+  return {
+    type: ADDED_CAMPUS,
+    campus
   }
 }
 
@@ -69,10 +77,17 @@ export const setActiveCampusThunk = (dispatch, id) => {
 export const setActiveStudentThunk = (dispatch, id) => {
   return () => {
     axios.get('/api/students/' + id)
-      .then(res => res.data, () => {
-
-      })
+      .then(res => res.data, console.error)
       .then(activeStudent => dispatch(setActiveStudent(activeStudent)))
+      .catch(console.error)
+  }
+}
+
+export const addCampusThunk = (dispatch, campus) => {
+  return () => {
+    axios.post('/api/campuses', campus)
+      .then(res => res.data, console.error)
+      .then(newCampus => dispatch(addedCampus(newCampus)))
       .catch(console.error)
   }
 }

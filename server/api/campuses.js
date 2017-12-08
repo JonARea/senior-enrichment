@@ -41,6 +41,8 @@ router.delete('/:id', (req, res, next) => {
       id: +req.params.id
     }
   })
+  .then(res.send('The campus was successfully deleted.'))
+  .catch(next)
 })
 
 module.exports = router
