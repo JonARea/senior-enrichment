@@ -29,7 +29,9 @@ class SingleCampus extends Component {
             <Link to={'/campuses/update/' + id}>
               <Button size='small'>Edit</Button>
             </Link>
-            <Button size='small'>Delete</Button>
+            <Link to={'/campuses/delete/' + id}>
+              <Button size='small'>Delete</Button>
+            </Link>
           </Button.Group>
         </div>
         <div className="campus-detail-right">
