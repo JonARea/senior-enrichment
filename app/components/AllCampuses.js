@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PreviewCampus from './PreviewCampus'
+import CampusForm from './CampusForm'
 import {fetchCampusesThunk} from '../actions'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'

@@ -91,3 +91,11 @@ export const addCampusThunk = (dispatch, campus) => {
       .catch(console.error)
   }
 }
+
+export const updateCampusThunk = (dispatch, campus) => {
+  return () => {
+    axios.put('/api/campuses/' + campus.id, campus)
+      .then(dispatch(fetchCampusesThunk(dispatch)))
+      .catch(console.error)
+  }
+}

@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
 import {Form, Header, Button, Divider, Message} from 'semantic-ui-react'
-import {addCampusThunk} from '../actions'
+import {addCampusThunk, updateCampusThunk} from '../actions'
 import {connect} from 'react-redux'
 
 class CampusForm extends Component {
-  constructor() {
-    super()
-    this.state = {
+  constructor(props) {
+    super(props)
+
+    this.state = this.props.updating ? this.props.activeCampus : {
       name: '',
-      description: ''
+      description: '',
+      imageUrl: ''
     }
   }
 
@@ -16,14 +18,19 @@ class CampusForm extends Component {
     return (
       <div className='campus-form-container'>
         <Header>
-          Add a new Campus
+          {this.props.title}
         </Header>
-        <Form onSubmit={(e) => this.props.handleSubmit(e, this)}>
+        <Form onSubmit={(e) => {
+          return this.props.updating ? this.props.handleUpdate(e, this.state) : this.props.handleAdd(e, this.state)
+          }}>
           <Form.Field>
             <Form.Input required label='Campus Name' value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} />
           </Form.Field>
           <Form.Field>
             <Form.TextArea required label='Campus Description' value={this.state.description} onChange={(e) => this.setState({description: e.target.value})} />
+          </Form.Field>
+          <Form.Field>
+              <Form.Input label='Campus Image' value={this.state.imageUrl} onChange={(e) => this.setState({imageUrl: e.target.value})} />
           </Form.Field>
           <Message
             success
@@ -45,14 +52,26 @@ class CampusForm extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    activeCampus: state.activeCampus,
+    updating: ownProps.updating
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSubmit (event, campusForm) {
+    handleAdd (event, state) {
       event.preventDefault()
-      console.log('submitted ', campusForm.state)
-      dispatch(addCampusThunk(dispatch, campusForm.state))
+      console.log('submitted ', state)
+      dispatch(addCampusThunk(dispatch, state))
+    },
+    handleUpdate (event, state) {
+      event.preventDefault()
+      console.log('submitted ', state)
+      dispatch(updateCampusThunk(dispatch, state))
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(CampusForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CampusForm)

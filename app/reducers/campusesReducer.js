@@ -1,4 +1,4 @@
-import {POPULATE_CAMPUSES, ADDED_CAMPUS} from '../actions'
+import {POPULATE_CAMPUSES, ADDED_CAMPUS, UPDATED_CAMPUS} from '../actions'
 
 const campusesReducer = (state = [], action) => {
   switch (action.type) {

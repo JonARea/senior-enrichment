@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import StudentTable from './StudentTable'
 import {setActiveCampusThunk, fetchStudentsThunk} from '../actions'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Tab, Button} from 'semantic-ui-react'
 
-class SingleCampusView extends Component {
+class SingleCampus extends Component {
 
   componentDidMount () {
     const id =  this.props.location.pathname.split('campuses/')[1]
@@ -12,19 +13,22 @@ class SingleCampusView extends Component {
     this.props.fetchStudents()
   }
   render () {
-    const {name, imageUrl, description} = this.props.activeCampus
+    const {name, imageUrl, description, id} = this.props.activeCampus
     const students = this.props.students
     const panes = [
       { menuItem: 'Description', render: () => <Tab.Pane attached={false}>{description}</Tab.Pane> },
       { menuItem: 'Students', render: () => <Tab.Pane attached={false}><StudentTable students={students} /></Tab.Pane> }
     ]
+
     return (
       <div className="campus-view-window">
         <div className="campus-detail-left">
           <h2>{name}</h2>
           <img src={imageUrl} alt="could not load the image " />
           <Button.Group attached='bottom' width='2' className="student-buttons">
-            <Button size='small'>Edit</Button>
+            <Link to={'/campuses/update/' + id}>
+              <Button size='small'>Edit</Button>
+            </Link>
             <Button size='small'>Delete</Button>
           </Button.Group>
         </div>
@@ -54,4 +58,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleCampusView)
+export default connect(mapStateToProps, mapDispatchToProps)(SingleCampus)

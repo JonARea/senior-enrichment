@@ -13,6 +13,7 @@ export default function MainWindow () {
 
         <Switch>
           <Route exact path='/campuses/add' component={CampusForm} />
+          <Route path='/campuses/update/:id' render={(props) => <CampusForm updating title='Update Campus' {...props} />} />
           <Route path='/campuses/:id' component={SingleCampus} />
           <Route path='/campuses' component={AllCampuses} />
           <Route path='/students/:id' component={SingleStudent} />
