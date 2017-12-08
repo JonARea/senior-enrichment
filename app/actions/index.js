@@ -7,6 +7,7 @@ export const POPULATE_STUDENTS = 'POPULATE_STUDENTS'
 export const SET_ACTIVE_STUDENT = 'SET_ACTIVE_STUDENT'
 export const SET_ACTIVE_CAMPUS = 'SET_ACTIVE_CAMPUS'
 export const ADDED_CAMPUS = 'ADDED_CAMPUS'
+export const ADDED_STUDENT = 'ADDED_STUDENT'
 
 //ACTIONS
 
@@ -42,6 +43,13 @@ export const addedCampus = (campus) => {
   return {
     type: ADDED_CAMPUS,
     campus
+  }
+}
+
+export const addedStudent = (student) => {
+  return {
+    type: ADDED_STUDENT,
+    student
   }
 }
 
@@ -89,6 +97,15 @@ export const addCampusThunk = (dispatch, campus) => {
       .then(res => res.data, console.error)
       .then(newCampus => dispatch(addedCampus(newCampus)))
       .catch(console.error)
+  }
+}
+
+export const addStudentThunk = (dispatch, student) => {
+  return () => {
+    axios.post('/api/students', student)
+    .then(res => res.data, console.error)
+    .then(newStudent => dispatch(addedStudent(newStudent)))
+    .catch(console.error)
   }
 }
 
