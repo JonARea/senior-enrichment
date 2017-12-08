@@ -99,3 +99,19 @@ export const updateCampusThunk = (dispatch, campus) => {
       .catch(console.error)
   }
 }
+
+export const deleteCampusThunk = (dispatch, campus) => {
+  return () => {
+    axios.delete('/api/campuses/' + campus.id, campus)
+      .then(dispatch(fetchCampusesThunk(dispatch)))
+      .catch(console.error)
+  }
+}
+
+export const deleteStudentThunk = (dispatch, student) => {
+  return () => {
+    axios.delete('/api/students/' + student.id, student)
+      .then(dispatch(fetchStudentThunk(dispatch)))
+      .catch(console.error)
+  }
+}
