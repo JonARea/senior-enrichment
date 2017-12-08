@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import StudentTable from './StudentTable'
 import {setActiveCampusThunk, fetchStudentsThunk} from '../actions'
 import {connect} from 'react-redux'
-import { Tab } from 'semantic-ui-react'
+import {Tab, Button} from 'semantic-ui-react'
 
 class SingleCampusView extends Component {
 
@@ -23,6 +23,10 @@ class SingleCampusView extends Component {
         <div className="campus-detail-left">
           <h2>{name}</h2>
           <img src={imageUrl} alt="could not load the image " />
+          <Button.Group attached='bottom' width='2' className="student-buttons">
+            <Button size='small'>Edit</Button>
+            <Button size='small'>Delete</Button>
+          </Button.Group>
         </div>
         <div className="campus-detail-right">
           <Tab menu={{ pointing: true, secondary: true }} panes={panes} />
