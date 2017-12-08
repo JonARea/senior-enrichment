@@ -7,7 +7,7 @@ const StudentTable = (props) => (
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Student</Table.HeaderCell>
-        <Table.HeaderCell>GPA</Table.HeaderCell>
+        <Table.HeaderCell>StudentID</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import StudentTable from './StudentTable'
 import {fetchStudentsThunk} from '../actions'
 import {connect} from 'react-redux'
+import {Button, Header} from 'semantic-ui-react'
 
 class StudentView extends Component {
 
@@ -11,8 +12,10 @@ class StudentView extends Component {
 
   render() {
     return (
-      <div className='student-view-window'>
+      <div className='all-students-view-window'>
+        <Header>All Students</Header>
         <StudentTable students={this.props.students} />
+        <Button>Add Student</Button>
       </div>
     )
   }

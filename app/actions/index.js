@@ -30,6 +30,13 @@ export const setActiveCampus = (activeCampus) => {
   }
 }
 
+export const setActiveStudent = (activeStudent) => {
+  return {
+    type: SET_ACTIVE_STUDENT,
+    activeStudent
+  }
+}
+
 //THUNKS
 
 export const fetchCampusesThunk = (dispatch) => {
@@ -53,10 +60,19 @@ export const fetchStudentsThunk = (dispatch) => {
 export const setActiveCampusThunk = (dispatch, id) => {
   return () => {
     axios.get('/api/campuses/' + id)
-      .then(res => {
-        console.log('response from the server ', res.data)
-        return res.data})
+      .then(res => res.data, console.error)
       .then(activeCampus => dispatch(setActiveCampus(activeCampus)))
-      .catch(err => console.error('an error getting stuff ', err))
+      .catch(console.error)
+  }
+}
+
+export const setActiveStudentThunk = (dispatch, id) => {
+  return () => {
+    axios.get('/api/students/' + id)
+      .then(res => res.data, () => {
+
+      })
+      .then(activeStudent => dispatch(setActiveStudent(activeStudent)))
+      .catch(console.error)
   }
 }

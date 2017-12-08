@@ -33,7 +33,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 70vw;
+  margin-top: 15vh;
   background: white;
+  border-radius: 5px;
 }
 
 .single-campus-preview {
@@ -51,8 +53,28 @@ body {
   flex: 1 1 1em;
 }
 
-.student-view-window {
+.all-students-view-window {
   width: 70vw;
   padding: 2em 3em;
   background: white;
+  border-radius: 5px;
 }
+
+.single-student-view-window {
+  min-width: 50vw;
+  padding: 2em 3em;
+  background: white;
+  display: flex;
+  border-radius: 5px;
+}
+
+.student-detail-left {
+  margin: 1em 4em 1em 1em;
+
+}
+
+.student-detail-right {
+  margin: 1em 1em 1em 2em;
+  flex: 1 1 1em;
+}
+
