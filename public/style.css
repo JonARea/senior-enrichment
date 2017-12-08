@@ -30,18 +30,32 @@ body {
 }
 
 .campus-view-window {
-  display: flex;
-  flex-wrap: wrap;
   max-width: 70vw;
-  flex: 1 1 1em;
   margin-top: 15vh;
   background: white;
   border-radius: 5px;
+  padding: 2em;
+}
+
+.campus-previews {
+  display: flex;
+  flex: 1 1 1em;
+  flex-wrap: wrap;
 }
 
 .single-campus-preview {
   flex: 1 1 1em;
   margin: 2vh 2vw;
+}
+
+.single-campus-view-window {
+  display: flex;
+  max-width: 70vw;
+  min-width: 50vw;
+  margin-top: 15vh;
+  background: white;
+  border-radius: 5px;
+  padding: 2em;
 }
 
 .campus-detail-left {

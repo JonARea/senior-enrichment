@@ -14,14 +14,14 @@ class SingleCampus extends Component {
   }
   render () {
     const {name, imageUrl, description, id} = this.props.activeCampus
-    const students = this.props.students
+    const students = this.props.students.filter(student => student.campusId === id)
     const panes = [
       { menuItem: 'Description', render: () => <Tab.Pane attached={false}>{description}</Tab.Pane> },
       { menuItem: 'Students', render: () => <Tab.Pane attached={false}><StudentTable students={students} /></Tab.Pane> }
     ]
 
     return (
-      <div className="campus-view-window">
+      <div className="single-campus-view-window">
         <div className="campus-detail-left">
           <h2>{name}</h2>
           <img src={imageUrl} alt="could not load the image " />

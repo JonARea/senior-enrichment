@@ -102,16 +102,16 @@ export const addCampusThunk = (dispatch, campus) => {
 
 export const addStudentThunk = (dispatch, student) => {
   return () => {
-    axios.post('/api/students', student)
-    .then(res => res.data, console.error)
+    return axios.post('/api/students', student)
+    .then(res => res.data)
     .then(newStudent => dispatch(addedStudent(newStudent)))
-    .catch(console.error)
+    .catch(() => 'Invalid Entry!')
   }
 }
 
 export const updateCampusThunk = (dispatch, campus) => {
   return () => {
-    axios.put('/api/campuses/' + campus.id, campus)
+    return axios.put('/api/campuses/' + campus.id, campus)
       .then(dispatch(fetchCampusesThunk(dispatch)))
       .catch(console.error)
   }

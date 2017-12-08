@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Form, Header, Button, Divider, Message, Select} from 'semantic-ui-react'
-import {addStudentThunk, updateStudentThunk} from '../actions'
+import {addStudentThunk, updateStudentThunk, fetchCampusesThunk} from '../actions'
 import {connect} from 'react-redux'
 
 class StudentForm extends Component {
@@ -14,27 +14,29 @@ class StudentForm extends Component {
       lastName: '',
       email: '',
       gpa: 0,
-      campusId: null
+      campusId: null,
+      submitResults: ''
     }
   }
 
+  componentDidMount () {
+    this.props.fetchCampuses()
+  }
+
   render () {
-    const campusOptions = [{
-      text: 'first choice',
-      value: 1
-    },
-    {
-      text: 'second choice',
-      value: 2
-    }
-  ]
+    const campusOptions = this.props.campuses.map(campus => {
+      return {
+        text: campus.name,
+        value: campus.id
+      }
+    })
     return (
       <div className='campus-form-container'>
         <Header>
           {this.props.title}
         </Header>
         <Form onSubmit={(e) => {
-          return this.props.updating ? this.props.handleUpdate(e, this.state) : this.props.handleAdd(e, this.state)
+          return this.props.updating ? this.setState({submitResults: this.props.handleUpdate(e, this.state)}) : this.setState({submitResults: this.props.handleAdd(e, this.state)})
           }}>
 
           <Form.Field>
@@ -74,6 +76,7 @@ class StudentForm extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     activeStudent: state.activeStudent,
+    campuses: state.campuses,
     updating: ownProps.updating
   }
 }
@@ -83,12 +86,15 @@ const mapDispatchToProps = (dispatch) => {
     handleAdd (event, state) {
       event.preventDefault()
       console.log('submitted ', state)
-      dispatch(addStudentThunk(dispatch, state))
+      return dispatch(addStudentThunk(dispatch, state))
     },
     handleUpdate (event, state) {
       event.preventDefault()
       console.log('submitted ', state)
-      dispatch(updateStudentThunk(dispatch, state))
+      return dispatch(updateStudentThunk(dispatch, state))
+    },
+    fetchCampuses () {
+      return dispatch(fetchCampusesThunk(dispatch))
     }
   }
 }

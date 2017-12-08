@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import StudentTable from './StudentTable'
 import {fetchStudentsThunk} from '../actions'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Button, Header} from 'semantic-ui-react'
 
 class StudentView extends Component {
@@ -15,7 +16,9 @@ class StudentView extends Component {
       <div className='all-students-view-window'>
         <Header>All Students</Header>
         <StudentTable students={this.props.students} />
-        <Button>Add Student</Button>
+        <Link to='/students/add'>
+          <Button>Add Student</Button>
+        </Link>
       </div>
     )
   }
