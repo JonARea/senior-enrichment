@@ -27,10 +27,14 @@ class SingleCampus extends Component {
           <img src={imageUrl} alt="could not load the image " />
           <Button.Group attached='bottom' width='2' className="student-buttons">
             <Link to={'/campuses/update/' + id}>
-              <Button size='small'>Edit</Button>
+              <Button fluid>
+                Edit
+              </Button>
             </Link>
             <Link to={'/campuses/delete/' + id}>
-              <Button size='small'>Delete</Button>
+              <Button fluid>
+                Delete
+              </Button>
             </Link>
           </Button.Group>
         </div>

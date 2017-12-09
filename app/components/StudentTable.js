@@ -1,6 +1,7 @@
 import React from 'react'
 import StudentTableRow from './StudentTableRow'
-import { Header, Image, Table } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+import {Table, Button} from 'semantic-ui-react'
 
 const StudentTable = (props) => (
   <Table basic='very' celled >
@@ -8,6 +9,8 @@ const StudentTable = (props) => (
       <Table.Row>
         <Table.HeaderCell>Student</Table.HeaderCell>
         <Table.HeaderCell>StudentID</Table.HeaderCell>
+        <Table.HeaderCell />
+        <Table.HeaderCell />
       </Table.Row>
     </Table.Header>
 
@@ -17,6 +20,13 @@ const StudentTable = (props) => (
           return (<StudentTableRow key={student.id} student={student} />)
         })
       }
+      <Table.Row>
+        <Table.Cell>
+          <Link to='/students/add'>
+            <Button>Add Student</Button>
+          </Link>
+        </Table.Cell>
+      </Table.Row>
     </Table.Body>
 
   </Table>

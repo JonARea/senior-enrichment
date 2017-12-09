@@ -117,6 +117,14 @@ export const updateCampusThunk = (dispatch, campus) => {
   }
 }
 
+export const updateStudentThunk = (dispatch, student) => {
+  return () => {
+    return axios.put('/api/students/' + student.id, student)
+      .then(dispatch(fetchStudentsThunk(dispatch)))
+      .catch(console.error)
+  }
+}
+
 export const deleteCampusThunk = (dispatch, campus) => {
   return () => {
     axios.delete('/api/campuses/' + campus.id, campus)

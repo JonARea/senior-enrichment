@@ -20,6 +20,7 @@ export default function MainWindow () {
           <Route path='/campuses/:id' component={SingleCampus} />
           <Route path='/campuses' component={AllCampuses} />
           <Route path='/students/add' render={(props) => <StudentForm title='Add New Student' {...props} />} />
+          <Route path='/students/update/:id' render={(props) => <StudentForm title='Update Student' updating {...props} />} />
           <Route path='/students/delete/:id' render={(props) => <DeleteForm deleting='student' {...props} />} />
           <Route path='/students/:id' component={SingleStudent} />
           <Route path='/students' component={StudentView} />
