@@ -25,7 +25,7 @@ class SingleCampus extends Component {
         <div className="campus-detail-left">
           <h2>{name}</h2>
           <img src={imageUrl} alt="could not load the image " />
-          <Button.Group attached='bottom' width='2' className="student-buttons">
+          <Button.Group attached="bottom" width="2" className="student-buttons">
             <Link to={'/campuses/update/' + id}>
               <Button fluid>
                 Edit

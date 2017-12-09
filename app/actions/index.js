@@ -136,7 +136,7 @@ export const deleteCampusThunk = (dispatch, campus) => {
 export const deleteStudentThunk = (dispatch, student) => {
   return () => {
     axios.delete('/api/students/' + student.id, student)
-      .then(dispatch(fetchStudentThunk(dispatch)))
+      .then(dispatch(fetchStudentsThunk(dispatch)))
       .catch(console.error)
   }
 }

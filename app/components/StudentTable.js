@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {Table, Button} from 'semantic-ui-react'
 
 const StudentTable = (props) => (
-  <Table basic='very' celled >
+  <Table basic="very" celled >
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Student</Table.HeaderCell>
@@ -22,7 +22,7 @@ const StudentTable = (props) => (
       }
       <Table.Row>
         <Table.Cell>
-          <Link to='/students/add'>
+          <Link to="/students/add">
             <Button>Add Student</Button>
           </Link>
         </Table.Cell>

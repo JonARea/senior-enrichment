@@ -19,7 +19,7 @@ class CampusForm extends Component {
 
   renderSuccessMessage () {
     return (
-      <div className='campus-form-container'>
+      <div className="campus-form-container">
         <Message
         success
         content={this.props.updating ? 'Campus successfully updated.' : 'Campus successfully created.'}
@@ -33,37 +33,37 @@ class CampusForm extends Component {
 
   renderForm () {
     return (
-      <div className='campus-form-container'>
+      <div className="campus-form-container">
         <Header>
           {this.props.title}
         </Header>
 
-        <Form onSubmit={(e) => {
+        <Form onSubmit={(event) => {
           this.props.updating ?
-            this.props.handleUpdate(e, this.state) :
-            this.props.handleAdd(e, this.state)
+            this.props.handleUpdate(event, this.state) :
+            this.props.handleAdd(event, this.state)
           ;this.setState({submitted: true})
         }}>
           <Form.Field>
-            <Form.Input required label='Campus Name' value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} />
+            <Form.Input required label="Campus Name" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})} />
           </Form.Field>
           <Form.Field>
-            <Form.TextArea required label='Campus Description' value={this.state.description} onChange={(e) => this.setState({description: e.target.value})} />
+            <Form.TextArea required label="Campus Description" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})} />
           </Form.Field>
           <Form.Field>
-              <Form.Input label='Campus Image' value={this.state.imageUrl} onChange={(e) => this.setState({imageUrl: e.target.value})} />
+              <Form.Input label="Campus Image" value={this.state.imageUrl} onChange={(event) => this.setState({imageUrl: event.target.value})} />
           </Form.Field>
 
           <Message
             error
-            header='Uh oh!'
+            header="Uh oh!"
             content="Could not create campus. Please try again"
           />
           <Divider horizontal />
-          <Form.Button size='large' type='submit' positive>Submit</Form.Button>
+          <Form.Button size="large" type="submit" positive>Submit</Form.Button>
         </Form>
       <Divider horizontal />
-      <Button size='large' negative onClick={() => this.props.history.goBack()}>Cancel</Button>
+      <Button size="large" negative onClick={() => this.props.history.goBack()}>Cancel</Button>
     </div>
     )
   }

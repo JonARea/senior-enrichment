@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {setActiveStudentThunk, fetchCampusesThunk} from '../actions'
+import {setActiveStudentThunk} from '../actions'
 import {connect} from 'react-redux'
 import SingleStudentInfo from './SingleStudentInfo'
 import {Link} from 'react-router-dom'
@@ -41,12 +41,12 @@ class SingleStudentView extends Component {
       <div className="single-student-view-window">
         <div className="student-detail-left">
           <Header>{name}</Header>
-          <img src='http://fillmurray.com/160/210' alt="could not load the image" />
-          <Button.Group attached='bottom' width='2' className="student-buttons">
-            <Button size='small'>
+          <img src="http://fillmurray.com/160/210" alt="could not load the image" />
+          <Button.Group attached="bottom" width="2" className="student-buttons">
+            <Button size="small">
               <Link to={'/students/update/' + id}>Edit</Link>
             </Button>
-            <Button size='small'>
+            <Button size="small">
               <Link to={'/students/delete/' + id}>Delete</Link>
             </Button>
           </Button.Group>

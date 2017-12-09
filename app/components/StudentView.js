@@ -12,7 +12,7 @@ class StudentView extends Component {
 
   render() {
     return (
-      <div className='all-students-view-window'>
+      <div className="all-students-view-window">
         <Header>All Students</Header>
         <StudentTable students={this.props.students} />
       </div>
