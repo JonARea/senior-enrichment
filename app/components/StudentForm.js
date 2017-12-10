@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {Form, Header, Button, Divider, Message} from 'semantic-ui-react'
-import {addStudentThunk, updateStudentThunk, fetchCampusesThunk} from '../actions'
+import {addStudentThunk, updateStudentThunk, fetchCampusesThunk, setActiveStudentThunk} from '../actions'
 import {connect} from 'react-redux'
 
 class StudentForm extends Component {
@@ -11,18 +11,25 @@ class StudentForm extends Component {
     //check if this is an update or a create
 
     this.state = this.props.updating ? this.props.activeStudent : {
-      id: null,
+      id: '',
       firstName: '',
       lastName: '',
       email: '',
       gpa: 0,
-      campusId: null
+      campusId: null,
+      submitted: false
     }
-    this.state.submitted = false
   }
 
   componentDidMount () {
     this.props.fetchCampuses()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.activeStudent.id !== nextProps.activeStudent.id) {
+      console.log('recieved props ', nextProps)
+      this.setState(nextProps.activeStudent)
+    }
   }
 
   renderSuccessMessage () {
@@ -56,8 +63,8 @@ class StudentForm extends Component {
             this.props.handleUpdate(event, this.state)
           } else {
             this.props.handleAdd(event, this.state)
-            this.setState({submitted: true})
           }
+          this.setState({submitted: true})
         }}>
           <Form.Field>
             <Form.Input
@@ -136,16 +143,17 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleAdd (event, state) {
       event.preventDefault()
-      console.log('submitted ', state)
       dispatch(addStudentThunk(dispatch, state))
     },
     handleUpdate (event, state) {
       event.preventDefault()
-      console.log('submitted ', state)
       dispatch(updateStudentThunk(dispatch, state))
     },
     fetchCampuses () {
       dispatch(fetchCampusesThunk(dispatch))
+    },
+    setActiveStudent (id) {
+      dispatch(setActiveStudentThunk(dispatch, id))
     }
   }
 }

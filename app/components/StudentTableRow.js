@@ -21,14 +21,14 @@ const StudentTableRow = (props) => (
     </Table.Cell>
     <Table.Cell collapsing>
       <Link
-        onClick={props.setActiveStudent(props.student.id)}
+        onClick={() => props.setActiveStudent(props.student.id)}
         to={'/students/update/' +  props.student.id}>
         <Icon link name="edit" />
       </Link>
     </Table.Cell>
     <Table.Cell collapsing>
         <Link
-          onClick={props.setActiveStudent(props.student.id)}
+          onClick={() => props.setActiveStudent(props.student.id)}
           to={'/students/delete/' + props.student.id}>
           <Icon link name="user delete" />
         </Link>
