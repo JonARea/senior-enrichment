@@ -26,8 +26,8 @@ class StudentForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    //update active student
     if (this.props.activeStudent.id !== nextProps.activeStudent.id) {
-      console.log('recieved props ', nextProps)
       this.setState(nextProps.activeStudent)
     }
   }

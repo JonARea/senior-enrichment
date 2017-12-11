@@ -12,7 +12,7 @@ class CampusForm extends Component {
       id: null,
       name: '',
       description: '',
-      imageUrl: ''
+      imageUrl: undefined
     }
     this.state.submitted = false
   }

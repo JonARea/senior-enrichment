@@ -8,9 +8,6 @@ const Campus = db.define('campus', {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    validate: {
-      isUrl: true,
-    },
     defaultValue: 'http://www.fillmurray.com/200/300'
   },
   description: {
